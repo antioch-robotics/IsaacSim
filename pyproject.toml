@@ -1,0 +1,56 @@
+
+[project]
+name = "antioch-isaacsim"
+version = "5.0.0"
+description = "NVIDIA Isaac Sim Python Package (customized for Antioch)"
+requires-python = ">=3.11,<3.12"
+
+dependencies = [
+    "numpy",
+    "toml",
+    "protobuf==3.20.3",
+    "tensorboard==2.18.0",
+    "tensorboard-plugin-wit==1.8.1",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0", 
+    "torchaudio>=2.0.0",
+    "matplotlib>=3.5.0",
+    "scipy>=1.9.0",
+    "scikit-learn>=1.1.0",
+    "pandas>=1.5.0",
+    "jupyter>=1.0.0",
+    "ipython>=8.0.0",
+    "seaborn>=0.11.0",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+isaacsim = "isaacsim:main"
+
+# Simple approach: include everything from the build directory
+[tool.hatch.build.targets.wheel]
+packages = ["source/python_packages/isaacsim"]   # picks up the real Python package
+ignore-vcs = true                         # keep git‑ignored binaries
+only-packages = true                      # don’t ship stray top‑level files
+
+# Pull each heavy directory into the package
+[tool.hatch.build.targets.wheel.force-include]
+"_build/linux-x86_64/release/apps"         = "isaacsim/apps"
+"_build/linux-x86_64/release/config"         = "isaacsim/config"
+"_build/linux-x86_64/release/data"         = "isaacsim/data"
+"_build/linux-x86_64/release/dev"         = "isaacsim/dev"
+"_build/linux-x86_64/release/exts"         = "isaacsim/exts"
+"_build/linux-x86_64/release/extsbuild"    = "isaacsim/extsbuild"
+"_build/linux-x86_64/release/extscache"    = "isaacsim/extscache"
+"_build/linux-x86_64/release/extsDeprecated" = "isaacsim/extsDeprecated"
+"_build/linux-x86_64/release/kit"          = "isaacsim/kit"
+"_build/linux-x86_64/release/tools"         = "isaacsim/tools"

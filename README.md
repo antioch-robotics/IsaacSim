@@ -13,6 +13,14 @@
 
 NVIDIA Isaac Sim™ is a simulation platform built on NVIDIA Omniverse, designed to develop, test, train, and deploy AI-powered robots in realistic virtual environments. It supports importing robotic systems from common formats such as URDF, MJCF, and CAD. The simulator leverages high-fidelity, GPU-accelerated physics engines to simulate accurate dynamics and support multi-sensor RTX rendering at scale. It comes equipped with end-to-end workflows including synthetic data generation, reinforcement learning, ROS integration, and digital twin simulation. Isaac Sim provides the infrastructure needed to support robotics development at any stage.
 
+## Notes for Antioch
+
+**This is a fork of the Isaac Sim repository that is customized for Antioch.**
+
+To build a custom Antioch package:
+
+1. Set up environment (`uv sync`)
+2. Build the package (`python -m build --wheel`) --> you'll get a wheel file in the `dist` directory
 
 ## Key Features
 
